@@ -12,12 +12,13 @@ public abstract class Account {
     public Account(Profile holder, double balance) {
         this.holder = holder;
         this.balance = balance;
-
     }
 
     @Override
     public boolean equals(Object obj) {
-        return false;
+        if (!(obj instanceof Account other))
+            return false;
+        return this.holder.equals(other.holder) && this.getType().equals(other.getType());
     }
 
     @Override
@@ -29,6 +30,10 @@ public abstract class Account {
 
     }
     public void deposit(double amount) {
+
+    }
+
+    public void changeState() {
 
     }
 
