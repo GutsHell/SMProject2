@@ -14,7 +14,7 @@ public class AccountDatabase {
 
     private int find(Account account) {
         for (int i = 0; i < numAcct; i++) {
-            if (account.equals(accounts[i])) return i;
+            if (accounts[i].equals(account)) return i;
         }
         return NOT_FOUND;
     }
@@ -26,6 +26,34 @@ public class AccountDatabase {
     }
 
     public boolean open(Account account) {
+        int index = find(account);
+        if (index != NOT_FOUND) {
+            if (accounts[index].closed) {
+                accounts[index].changeState();
+                accounts[index].deposit(account.balance);
+                if (accounts[index].getType().equals("College Checking")) {
+                    ((CollegeChecking) accounts[index]).changeCampus(((CollegeChecking) accounts[index]).getCode());
+                }
+
+                if (accounts[index].getType().equals("Savings")) {
+                    ((Savings) accounts[index]).changeLoyalty(((Savings) accounts[index]).getLoyalty());
+                }
+
+                if(accounts[index].getType().equals("Money Market Savings")) {
+                    ((MoneyMarket) accounts[index]).changeLoyalty(1);
+                }
+                System.out.println("Account reopened.");
+                return true;
+            }
+        }
+
+        else {
+            if (accounts[accounts.length - 1] != null) grow();
+            accounts[numAcct] = account;
+            numAcct++;
+            System.out.println("Account opened.");
+            return true;
+        }
         return false;
     }
 
@@ -42,7 +70,11 @@ public class AccountDatabase {
     }
 
     public void print() {
-
+        System.out.println("*list of accounts in the database*");
+        for (int i = 0; i < numAcct; i++) {
+            System.out.println(accounts[i]);
+        }
+        System.out.println("end of list*");
     }
 
     public void printByAccountType() {

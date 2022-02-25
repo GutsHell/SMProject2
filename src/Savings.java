@@ -11,20 +11,23 @@ public class Savings extends Account {
         this.loyalty = loyalty;
     }
 
-    public void changeLoyalty() {
-        if (loyalty == 1) loyalty = 0;
-        else loyalty = 1;
+    public void changeLoyalty(int loyalty) {
+        this.loyalty = loyalty;
     }
 
-    public String getLoyalty() {
+    public int getLoyalty() {
+        return loyalty;
+    }
+
+    public String isLoyal() {
         return loyalty == 1 ? "::Loyal" : "";
     }
 
     @Override
     public String toString() {
         return closed == false
-                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + this.getLoyalty()
-                : this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + "::CLOSED";
+                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + this.isLoyal()
+                : this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + "::CLOSED";
     }
 
     @Override

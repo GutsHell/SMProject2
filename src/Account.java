@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 /**
  * A generalized account class to allow for inheritance of different account types
  * Includes account holder information, account state, and account balance
@@ -14,6 +16,8 @@ public abstract class Account {
         this.balance = balance;
     }
 
+    protected static final DecimalFormat df = new DecimalFormat("0.00");
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Account other))
@@ -24,8 +28,8 @@ public abstract class Account {
     @Override
     public String toString() {
         return closed == false
-                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance
-                : this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + "::CLOSED";
+                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance)
+                : this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + "::CLOSED";
     }
 
     public void withdraw(double amount) {
@@ -36,7 +40,7 @@ public abstract class Account {
     }
 
     public void changeState() {
-
+        closed = !closed;
     }
 
     public abstract double monthlyInterest();

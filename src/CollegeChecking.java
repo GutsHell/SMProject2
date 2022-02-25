@@ -16,11 +16,19 @@ public class CollegeChecking extends Checking {
         return campusCode == 1 ? "NEWARK" : "CAMDEN";
     }
 
+    public int getCode() {
+        return campusCode;
+    }
+
+    public void changeCampus(int newCode) {
+        this.campusCode = newCode;
+    }
+
     @Override
     public String toString() {
         return closed == false
-                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + "::" + this.getCampus()
-                : this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + "::CLOSED::" + this.getCampus();
+                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + "::" + this.getCampus()
+                : this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + "::CLOSED::" + this.getCampus();
     }
 
     @Override
