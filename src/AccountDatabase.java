@@ -1,3 +1,7 @@
+/**
+ * A database that holds all created account information
+ * @author Rory Xu, Hassan Alfareed
+ */
 public class AccountDatabase {
     private Account [] accounts;
     private int numAcct;

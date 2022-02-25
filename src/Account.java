@@ -1,3 +1,9 @@
+/**
+ * A generalized account class to allow for inheritance of different account types
+ * Includes account holder information, account state, and account balance
+ * @author Rory Xu, Hassan Alfareed
+ */
+
 public abstract class Account {
     protected Profile holder;
     protected boolean closed = false;

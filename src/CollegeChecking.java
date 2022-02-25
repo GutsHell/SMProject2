@@ -1,3 +1,7 @@
+/**
+ * A college checking account sub-class of the Account class
+ * @author Rory Xu, Hassan Alfareed
+ */
 public class CollegeChecking extends Account {
 
     private int campusCode;

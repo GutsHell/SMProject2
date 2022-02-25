@@ -1,3 +1,7 @@
+/**
+ * A money market account sub-class of the Account class
+ * @author Rory Xu, Hassan Alfareed
+ */
 public class MoneyMarket extends Account {
 
     private int loyalty;

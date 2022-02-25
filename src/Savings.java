@@ -1,3 +1,7 @@
+/**
+ * A savings account sub-class of the Account class
+ * @author Rory Xu, Hassan Alfareed
+ */
 public class Savings extends Account {
 
     private int loyalty;
