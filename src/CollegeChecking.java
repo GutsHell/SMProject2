@@ -11,6 +11,18 @@ public class CollegeChecking extends Checking {
         this.campusCode = campusCode;
     }
 
+    public String getCampus() {
+        if (campusCode == 0) return "NEW_BRUNSWICK";
+        return campusCode == 1 ? "NEWARK" : "CAMDEN";
+    }
+
+    @Override
+    public String toString() {
+        return closed == false
+                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + "::" + this.getCampus()
+                : this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + "::CLOSED::" + this.getCampus();
+    }
+
     @Override
     public double monthlyInterest() {
         return 0.025/12;
@@ -19,5 +31,10 @@ public class CollegeChecking extends Checking {
     @Override
     public double fee() {
         return 0;
+    }
+
+    @Override
+    public String getType() {
+        return "College Checking";
     }
 }
