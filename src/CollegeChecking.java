@@ -11,9 +11,13 @@ public class CollegeChecking extends Account {
         this.campusCode = campusCode;
     }
 
+    public boolean codeIsValid() {
+        return campusCode == 0 || campusCode == 1 || campusCode == 2;
+    }
+
     @Override
     public double monthlyInterest() {
-        return 0.001;
+        return 0.025/12;
     }
 
     @Override
@@ -23,6 +27,6 @@ public class CollegeChecking extends Account {
 
     @Override
     public String getType() {
-        return null;
+        return "CollegeChecking";
     }
 }
