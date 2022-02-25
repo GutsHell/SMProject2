@@ -8,7 +8,11 @@ public class Profile {
 
     @Override
     public boolean equals(Object obj) {
-        return false;
+        if (!(obj instanceof Profile other))
+            return false;
+        return this.fname.equals(other.fname)
+                && this.lname.equals(other.lname)
+                && this.dob.equals(other.dob);
     }
 
     @Override
