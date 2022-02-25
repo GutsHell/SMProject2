@@ -17,6 +17,6 @@ public class Profile {
 
     @Override
     public String toString() {
-        return "";
+        return this.fname + " " + this.lname + " " + this.dob;
     }
 }
