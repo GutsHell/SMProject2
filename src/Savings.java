@@ -13,16 +13,16 @@ public class Savings extends Account {
 
     @Override
     public double monthlyInterest() {
-        return 0.001;
+        return this.loyalty == 1 ? 0.045/12 : 0.03/12;
     }
 
     @Override
     public double fee() {
-        return 0;
+        return this.balance >= 300 ? 0 : 6;
     }
 
     @Override
     public String getType() {
-        return null;
+        return "Savings";
     }
 }
