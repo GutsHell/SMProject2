@@ -1,3 +1,4 @@
+import javax.sound.sampled.EnumControl;
 import java.util.Scanner;
 
 public class BankTeller {
@@ -96,7 +97,33 @@ public class BankTeller {
     }
 
     private static void cCommand(String[] input, AccountDatabase database) {
-        
+        try {
+            String accType = input[1];
+            Date dob = new Date(input[4]);
+            if (!dateChecker(dob)) return;
+            Profile accHolder = new Profile(input[2], input[3], dob);
+
+            Account acc = null;
+            if (accType.equals("MM")) {
+                acc = new MoneyMarket(accHolder, 0, 0);
+            }
+            else if (accType.equals("C")) {
+                acc = new Checking(accHolder, 0);
+            }
+            else if (accType.equals("CC")) {
+                acc = new CollegeChecking(accHolder, 0, 0);
+            }
+            else if (accType.equals("S")) {
+                acc = new Savings(accHolder, 0, 0);
+            }
+            if (!database.close(acc)) {
+                System.out.println("Account is closed already.");
+            }
+        }
+
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Missing data for closing an account.");
+        }
     }
 
     private static void pCommand(AccountDatabase database) {

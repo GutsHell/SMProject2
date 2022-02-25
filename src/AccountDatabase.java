@@ -58,6 +58,22 @@ public class AccountDatabase {
     }
 
     public boolean close(Account account) {
+        int index = find(account);
+        if (index != NOT_FOUND) {
+            if (!accounts[index].closed) {
+                accounts[index].changeState();
+                accounts[index].setBalance(0);
+                if (accounts[index].getType().equals("Savings")) {
+                    ((Savings) accounts[index]).changeLoyalty(0);
+                }
+
+                if(accounts[index].getType().equals("Money Market Savings")) {
+                    ((MoneyMarket) accounts[index]).changeLoyalty(0);
+                }
+                System.out.println("Account closed.");
+                return true;
+            }
+        }
         return false;
     }
 

@@ -23,7 +23,7 @@ public class MoneyMarket extends Savings {
     public String toString() {
         return closed == false
                 ? this.getType() + "::" + this.holder.toString()
-                    + "::Balance $" + df.format(this.balance) + this.isLoyal() + "::Withdrawals:" + getWithdrawals()
+                    + "::Balance $" + df.format(this.balance) + this.isLoyal() + "::Withdrawals: " + getWithdrawals()
                 : this.getType() + "::" + this.holder.toString()
                     + "::Balance $" + df.format(this.balance) + "::CLOSED::Withdrawals: " + getWithdrawals();
     }

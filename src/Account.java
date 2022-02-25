@@ -43,6 +43,10 @@ public abstract class Account {
         closed = !closed;
     }
 
+    public void setBalance(int newBal) {
+        balance = newBal;
+    }
+
     public abstract double monthlyInterest();
     public abstract double fee();
     public abstract String getType();
