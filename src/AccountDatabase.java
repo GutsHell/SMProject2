@@ -74,11 +74,29 @@ public class AccountDatabase {
         for (int i = 0; i < numAcct; i++) {
             System.out.println(accounts[i]);
         }
-        System.out.println("end of list*");
+        System.out.println("*end of list*");
+    }
+
+    public void sortType(Account[] accounts) {
+        for (int i = 0; i < numAcct; i++) {
+            for (int j = i + 1; j < numAcct; j++) {
+                if (!accounts[j].equals(null)
+                    && accounts[j].getType().compareTo(accounts[i].getType()) < 0) {
+                    Account temp = accounts[j];
+                    accounts[j] = accounts[i];
+                    accounts[i] = temp;
+                }
+            }
+        }
     }
 
     public void printByAccountType() {
-
+        System.out.println("*list of accounts by account type.");
+        sortType(accounts);
+        for (int i = 0; i < numAcct; i++) {
+            System.out.println(accounts[i]);
+        }
+        System.out.println("*end of list.");
     }
 
     public void printFeeAndInterest() {

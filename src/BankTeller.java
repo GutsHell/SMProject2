@@ -13,22 +13,23 @@ public class BankTeller {
                     oCommand(input, database);
                     break;
                 case "C":
-                    //cCommand(inputAsArray, database);
+                    cCommand(input, database);
                     break;
                 case "D":
-                    //dCommand(inputAsArray, database);
+                    //dCommand(input, database);
                     break;
                 case "W":
-                    //wCommand(inputAsArray, database);
+                    //wCommand(input, database);
                     break;
                 case "P":
                     pCommand(database);
                     break;
-                case "PT":  //ptCommand(inputAsArray);
+                case "PT":
+                    ptCommand(database);
                     break;
-                case "PI":  //piCommand(inputAsArray);
+                case "PI":  //piCommand(database);
                     break;
-                case "UB":  //ubCommand(inputAsArray);
+                case "UB":  //ubCommand(input);
                     break;
                 case "Q":
                     online = false;
@@ -94,8 +95,16 @@ public class BankTeller {
         }
     }
 
+    private static void cCommand(String[] input, AccountDatabase database) {
+        
+    }
+
     private static void pCommand(AccountDatabase database) {
         database.print();
+    }
+
+    private static void ptCommand(AccountDatabase database) {
+        database.printByAccountType();
     }
 
     public static boolean dateChecker(Date dob) {
