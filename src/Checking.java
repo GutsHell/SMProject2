@@ -1,3 +1,7 @@
+/**
+ * A checking account sub-class of the Account class
+ * @author Rory Xu, Hassan Alfareed
+ */
 public class Checking extends Account {
 
     public Checking(Profile holder, double balance) {
@@ -6,16 +10,19 @@ public class Checking extends Account {
 
     @Override
     public double monthlyInterest() {
-        return 0.001;
+        return 0.001/12;
     }
 
     @Override
     public double fee() {
-        return 0;
+        if (this.balance >= 1000)
+            return 0;
+        else
+            return 25;
     }
 
     @Override
     public String getType() {
-        return null;
+        return "Checking";
     }
 }
