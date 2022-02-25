@@ -23,7 +23,9 @@ public abstract class Account {
 
     @Override
     public String toString() {
-        return "";
+        return closed == false
+                ? this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance
+                : this.getType() + "::" + this.holder.toString() + "::Balance $" + this.balance + "::CLOSED";
     }
 
     public void withdraw(double amount) {
