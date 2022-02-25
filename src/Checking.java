@@ -15,10 +15,7 @@ public class Checking extends Account {
 
     @Override
     public double fee() {
-        if (this.balance >= 1000)
-            return 0;
-        else
-            return 25;
+        return this.balance >= 1000 ? 0 : 25;
     }
 
     @Override
