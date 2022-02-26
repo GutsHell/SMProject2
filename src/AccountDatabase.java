@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 /**
  * A database that holds all created account information
  * @author Rory Xu, Hassan Alfareed
@@ -7,6 +9,7 @@ public class AccountDatabase {
     private int numAcct;
     static int NOT_FOUND = -1;
     static int HAS_CHECKING = -2;
+    static final DecimalFormat df = new DecimalFormat("0.00");
 
     public AccountDatabase() {
         this.accounts = new Account[4];
@@ -166,6 +169,12 @@ public class AccountDatabase {
     }
 
     public void printFeeAndInterest() {
-
+        System.out.println("*list of accounts by account type.");
+        for (int i = 0; i < numAcct; i++) {
+            System.out.println(accounts[i] + "::fee $" + df.format(accounts[i].fee())
+                    + "::monthly interest $"
+                    + df.format(accounts[i].balance*accounts[i].monthlyInterest()));
+        }
+        System.out.println("*end of list.");
     }
 }

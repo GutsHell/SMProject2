@@ -30,7 +30,7 @@ public class MoneyMarket extends Savings {
 
     @Override
     public double monthlyInterest() {
-        return this.loyalty == 1 ? 0.095/12 : 0.08/12;
+        return this.loyalty == 1 ? 0.0095/12 : 0.008/12;
     }
 
     @Override

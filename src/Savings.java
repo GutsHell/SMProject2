@@ -32,7 +32,7 @@ public class Savings extends Account {
 
     @Override
     public double monthlyInterest() {
-        return loyalty == 1 ? 0.045/12 : 0.03/12;
+        return loyalty == 1 ? 0.0045/12 : 0.003/12;
     }
 
     @Override

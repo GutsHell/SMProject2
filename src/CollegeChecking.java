@@ -33,7 +33,7 @@ public class CollegeChecking extends Checking {
 
     @Override
     public double monthlyInterest() {
-        return 0.025/12;
+        return 0.0025/12;
     }
 
     @Override

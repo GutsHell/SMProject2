@@ -31,7 +31,8 @@ public class BankTeller {
                 case "PT":
                     ptCommand(database);
                     break;
-                case "PI":  //piCommand(database);
+                case "PI":
+                    piCommand(database);
                     break;
                 case "UB":  //ubCommand(input);
                     break;
@@ -191,6 +192,10 @@ public class BankTeller {
 
     private static void ptCommand(AccountDatabase database) {
         database.printByAccountType();
+    }
+
+    private static void piCommand(AccountDatabase database) {
+        database.printFeeAndInterest();
     }
 
     public static boolean dateChecker(Date dob) {
