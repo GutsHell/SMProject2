@@ -177,6 +177,11 @@ public class AccountDatabase {
      * Prints the database in current order
      */
     public void print() {
+
+        if (!(numAcct > 0)) {
+            System.out.println("Account Database is empty!");
+            return;
+        }
         System.out.println("\n*list of accounts in the database*");
         for (int i = 0; i < numAcct; i++) {
             System.out.println(accounts[i]);
@@ -205,6 +210,10 @@ public class AccountDatabase {
      * Prints the database in alphabetical order by type
      */
     public void printByAccountType() {
+        if (!(numAcct > 0)) {
+            System.out.println("Account Database is empty!");
+            return;
+        }
         System.out.println("\n*list of accounts by account type.");
         sortType(accounts);
         for (int i = 0; i < numAcct; i++) {
@@ -217,6 +226,10 @@ public class AccountDatabase {
      * Prints the database in current order and with monthly fee and interest information
      */
     public void printFeeAndInterest() {
+        if (!(numAcct > 0)) {
+            System.out.println("Account Database is empty!");
+            return;
+        }
         System.out.println("\n*list of accounts with fee and monthly interest");
         for (int i = 0; i < numAcct; i++) {
             System.out.println(accounts[i] + "::fee $" + df.format(accounts[i].fee())
@@ -230,6 +243,10 @@ public class AccountDatabase {
      * Updates the account balances with fee and interest rates
      */
     public void update() {
+        if (!(numAcct > 0)) {
+            System.out.println("Account Database is empty!");
+            return;
+        }
         System.out.println("\n*list of accounts with updated balance");
         for (int i = 0; i < numAcct; i++) {
             accounts[i].deposit(accounts[i].balance*accounts[i].monthlyInterest());
