@@ -62,7 +62,7 @@ public class BankTeller {
         try{
             String accType = input[1];
             Date dob = new Date(input[4]);
-            if (!dateChecker(dob)) return;
+            if (dateChecker(dob)) return;
             Profile accHolder = new Profile(input[2], input[3], dob);
             double balance = Double.parseDouble(input[5]);
             if (balance <= 0) {
@@ -119,7 +119,7 @@ public class BankTeller {
         try {
             String accType = input[1];
             Date dob = new Date(input[4]);
-            if (!dateChecker(dob)) return;
+            if (dateChecker(dob)) return;
             Profile accHolder = new Profile(input[2], input[3], dob);
 
             Account acc = switch (accType) {
@@ -148,7 +148,7 @@ public class BankTeller {
         try {
             String accType = input[1];
             Date dob = new Date(input[4]);
-            if (!dateChecker(dob)) return;
+            if (dateChecker(dob)) return;
             Profile accHolder = new Profile(input[2], input[3], dob);
             double balance = Double.parseDouble(input[5]);
 
@@ -177,7 +177,7 @@ public class BankTeller {
         try {
             String accType = input[1];
             Date dob = new Date(input[4]);
-            if (!dateChecker(dob)) return;
+            if (dateChecker(dob)) return;
             Profile accHolder = new Profile(input[2], input[3], dob);
             double balance = Double.parseDouble(input[5]);
 
@@ -239,9 +239,9 @@ public class BankTeller {
 
         if (!dob.isValid() || dob.compareTo(current) >= 0) {
             System.out.println("Date of birth invalid.");
-            return false;
+            return true;
 
         }
-        return true;
+        return false;
     }
 }
