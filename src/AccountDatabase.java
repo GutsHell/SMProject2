@@ -6,6 +6,7 @@ public class AccountDatabase {
     private Account [] accounts;
     private int numAcct;
     static int NOT_FOUND = -1;
+    static int HAS_CHECKING = -2;
 
     public AccountDatabase() {
         this.accounts = new Account[4];
@@ -19,6 +20,17 @@ public class AccountDatabase {
         return NOT_FOUND;
     }
 
+    private int findChecking(Account account) {
+        for (int i = 0; i < numAcct; i++) {
+            if (accounts[i].getHolder().equals(account.getHolder())
+                    && ((accounts[i].getType().equals("Checking") && account.getType().equals("College Checking"))
+                || (accounts[i].getType().equals("College Checking") && account.getType().equals("Checking")))) {
+                return HAS_CHECKING;
+            }
+        }
+        return NOT_FOUND;
+    }
+
     private void grow() {
         Account [] grown = new Account[accounts.length + 4];
         System.arraycopy(accounts, 0, grown, 0, accounts.length);
@@ -27,6 +39,7 @@ public class AccountDatabase {
 
     public boolean open(Account account) {
         int index = find(account);
+        int hasChecking = findChecking(account);
         if (index != NOT_FOUND) {
             if (accounts[index].closed) {
                 accounts[index].changeState();
@@ -48,6 +61,9 @@ public class AccountDatabase {
         }
 
         else {
+            if (hasChecking == HAS_CHECKING) {
+                return false;
+            }
             if (accounts[accounts.length - 1] != null) grow();
             accounts[numAcct] = account;
             numAcct++;

@@ -33,10 +33,10 @@ public abstract class Account {
     }
 
     public void withdraw(double amount) {
-
+        balance -= amount;
     }
     public void deposit(double amount) {
-
+        balance += amount;
     }
 
     public void changeState() {
@@ -45,6 +45,10 @@ public abstract class Account {
 
     public void setBalance(int newBal) {
         balance = newBal;
+    }
+
+    public Profile getHolder() {
+        return holder;
     }
 
     public abstract double monthlyInterest();

@@ -10,6 +10,9 @@ public class BankTeller {
         while (online) {
             String[] input = command.nextLine().split("\\s+");
             switch (input[0]) {
+                case "":
+                    System.out.println();
+                    break;
                 case "O":
                     oCommand(input, database);
                     break;
