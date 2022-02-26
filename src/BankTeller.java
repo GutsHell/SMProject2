@@ -70,35 +70,35 @@ public class BankTeller {
                 return;
             }
             Account acc = null;
-            if (accType.equals("MM")) {
-                if (balance < 2500) {
-                    System.out.println("Minimum of $2500 to open a MoneyMarket account");
-                    return;
+            switch (accType) {
+                case "MM" -> {
+                    if (balance < 2500) {
+                        System.out.println("Minimum of $2500 to open a MoneyMarket account");
+                        return;
+                    }
+                    acc = new MoneyMarket(accHolder, balance, 1);
                 }
-                acc = new MoneyMarket(accHolder, balance, 1);
-            }
-            else if (accType.equals("C")) {
-                acc = new Checking(accHolder, balance);
-            }
-            else if (accType.equals("CC")) {
-                if (Integer.parseInt(input[6]) != 0
-                        && Integer.parseInt(input[6]) != 1
-                        && Integer.parseInt(input[6]) != 2)
-                {
-                    System.out.println("Invalid campus code.");
-                    return;
+                case "C" -> acc = new Checking(accHolder, balance);
+                case "CC" -> {
+                    if (Integer.parseInt(input[6]) != 0
+                            && Integer.parseInt(input[6]) != 1
+                            && Integer.parseInt(input[6]) != 2) {
+                        System.out.println("Invalid campus code.");
+                        return;
+                    }
+                    acc = new CollegeChecking(accHolder, balance, Integer.parseInt(input[6]));
                 }
-                acc = new CollegeChecking(accHolder, balance, Integer.parseInt(input[6]));
-            }
-            else if (accType.equals("S")) {
-                if (!(input[6].equals("0") || input[6].equals("1"))) {
-                    System.out.println("Invalid loyalty status");
-                    return;
+                case "S" -> {
+                    if (!(input[6].equals("0") || input[6].equals("1"))) {
+                        System.out.println("Invalid loyalty status");
+                        return;
+                    }
+                    acc = new Savings(accHolder, balance, Integer.parseInt(input[6]));
                 }
-                acc = new Savings(accHolder, balance, Integer.parseInt(input[6]));
             }
 
             if (!database.open(acc)) {
+                assert acc != null;
                 System.out.println(acc.holder + " same account (type) is in the database.");
             }
         }
@@ -122,19 +122,13 @@ public class BankTeller {
             if (!dateChecker(dob)) return;
             Profile accHolder = new Profile(input[2], input[3], dob);
 
-            Account acc = null;
-            if (accType.equals("MM")) {
-                acc = new MoneyMarket(accHolder, 0, 0);
-            }
-            else if (accType.equals("C")) {
-                acc = new Checking(accHolder, 0);
-            }
-            else if (accType.equals("CC")) {
-                acc = new CollegeChecking(accHolder, 0, 0);
-            }
-            else if (accType.equals("S")) {
-                acc = new Savings(accHolder, 0, 0);
-            }
+            Account acc = switch (accType) {
+                case "MM" -> new MoneyMarket(accHolder, 0, 0);
+                case "C" -> new Checking(accHolder, 0);
+                case "CC" -> new CollegeChecking(accHolder, 0, 0);
+                case "S" -> new Savings(accHolder, 0, 0);
+                default -> null;
+            };
             if (!database.close(acc)) {
                 System.out.println("Account is closed already.");
             }
@@ -158,19 +152,14 @@ public class BankTeller {
             Profile accHolder = new Profile(input[2], input[3], dob);
             double balance = Double.parseDouble(input[5]);
 
-            Account acc = null;
-            if (accType.equals("MM")) {
-                acc = new MoneyMarket(accHolder, balance, 0);
-            }
-            else if (accType.equals("C")) {
-                acc = new Checking(accHolder, balance);
-            }
-            else if (accType.equals("CC")) {
-                acc = new CollegeChecking(accHolder, balance, 0);
-            }
-            else if (accType.equals("S")) {
-                acc = new Savings(accHolder, balance, 0);
-            }
+            Account acc = switch (accType) {
+                case "MM" -> new MoneyMarket(accHolder, balance, 0);
+                case "C" -> new Checking(accHolder, balance);
+                case "CC" -> new CollegeChecking(accHolder, balance, 0);
+                case "S" -> new Savings(accHolder, balance, 0);
+                default -> null;
+            };
+            assert acc != null;
             database.deposit(acc);
         }
         catch (NumberFormatException e) {
@@ -182,7 +171,7 @@ public class BankTeller {
      * Executes when the teller wishes to withdraw money from an account
      * Cannot overdraw an account into negatives
      * @param input Withdrawal information
-     * @param database THe database of accounts to be modified
+     * @param database The database of accounts to be modified
      */
     private static void wCommand(String[] input, AccountDatabase database) {
         try {
@@ -192,20 +181,16 @@ public class BankTeller {
             Profile accHolder = new Profile(input[2], input[3], dob);
             double balance = Double.parseDouble(input[5]);
 
-            Account acc = null;
-            if (accType.equals("MM")) {
-                acc = new MoneyMarket(accHolder, balance, 0);
-            }
-            else if (accType.equals("C")) {
-                acc = new Checking(accHolder, balance);
-            }
-            else if (accType.equals("CC")) {
-                acc = new CollegeChecking(accHolder, balance, 0);
-            }
-            else if (accType.equals("S")) {
-                acc = new Savings(accHolder, balance, 0);
-            }
-            database.withdraw(acc);
+            Account acc = switch (accType) {
+                case "MM" -> new MoneyMarket(accHolder, balance, 0);
+                case "C" -> new Checking(accHolder, balance);
+                case "CC" -> new CollegeChecking(accHolder, balance, 0);
+                case "S" -> new Savings(accHolder, balance, 0);
+                default -> null;
+            };
+            assert acc != null;
+            if (database.withdraw(acc))
+                System.out.println("Withdraw - balance updated.");
         }
         catch (NumberFormatException e) {
             System.out.println("Not a valid amount.");

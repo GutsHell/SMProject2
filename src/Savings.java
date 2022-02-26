@@ -48,7 +48,7 @@ public class Savings extends Account {
      */
     @Override
     public String toString() {
-        return closed == false
+        return !closed
                 ? this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + this.isLoyal()
                 : this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + "::CLOSED";
     }

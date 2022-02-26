@@ -9,9 +9,9 @@ public class MoneyMarket extends Savings {
     /**
      * Constructs a Money Market account
      * Uses Savings' super, but also sets the number of withdrawals to 0
-     * @param holder
-     * @param balance
-     * @param loyalty
+     * @param holder The holder of this account
+     * @param balance The balance of this acocunt
+     * @param loyalty The loyalty code of this account
      */
     public MoneyMarket(Profile holder, double balance, int loyalty) {
         super(holder, balance, loyalty);
@@ -26,8 +26,8 @@ public class MoneyMarket extends Savings {
     }
 
     /**
-     * Gets the number of withdrawals this acocunt has
-     * @return
+     * Gets the number of withdrawals this account has
+     * @return The number of total withdrawals seen on this account
      */
     public int getWithdrawals() {
         return withdrawals;
@@ -39,7 +39,7 @@ public class MoneyMarket extends Savings {
      */
     @Override
     public String toString() {
-        return closed == false
+        return !closed
                 ? this.getType() + "::" + this.holder.toString()
                     + "::Balance $" + df.format(this.balance) + this.isLoyal() + "::Withdrawals: " + getWithdrawals()
                 : this.getType() + "::" + this.holder.toString()

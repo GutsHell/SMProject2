@@ -6,9 +6,9 @@ import java.util.StringTokenizer;
  * @author Rory Xu, Hassan Alfareed
  */
 public class Date implements Comparable<Date> {
-    private int year;
-    private int month;
-    private int day;
+    private final int year;
+    private final int month;
+    private final int day;
 
     public Date(String date) {
         StringTokenizer st = new StringTokenizer(date);
@@ -70,8 +70,7 @@ public class Date implements Comparable<Date> {
         boolean result = false;
         for (int month : arr) {
             if (month == valueToCheck) {
-                result = true;
-                return result;
+                return true;
             }
         }
         return result;
@@ -92,25 +91,5 @@ public class Date implements Comparable<Date> {
     public static boolean isThirty(int month) {
         int[] months = {3, 5, 8, 10};
         return (inArray(months, month));
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public static void testbed(String args[]) {
-        Date d1 = new Date("02/27/1899");           //testcase#1
-        Date d2 = new Date("02/29/2001");           //testcase#2
-        Date d3 = new Date("00/29/2001");           //testcase#3
-        Date d4 = new Date("13/13/2022");           //testcase#4
-        Date d5 = new Date();                       //testcase#5
-
-        System.out.println(d1.isValid());
-        System.out.println(d2.isValid());
-        System.out.println(d3.isValid());
-        System.out.println(d4.isValid());
-        System.out.println(d5.isValid());
-        //System.out.println(d1.month);
-        //System.out.println(isLeapYr(d1.year));
     }
 }

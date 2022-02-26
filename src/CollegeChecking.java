@@ -48,7 +48,7 @@ public class CollegeChecking extends Checking {
      */
     @Override
     public String toString() {
-        return closed == false
+        return !closed
                 ? this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + "::" + this.getCampus()
                 : this.getType() + "::" + this.holder.toString() + "::Balance $" + df.format(this.balance) + "::CLOSED::" + this.getCampus();
     }

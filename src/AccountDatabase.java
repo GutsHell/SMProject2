@@ -32,7 +32,7 @@ public class AccountDatabase {
     }
 
     /**
-     * Checks whether or not a holder already owns a checking account of either type
+     * Checks whether a holder already owns a checking account of either type
      * @param account The account that the holder wishes to open
      * @return The index of an already existing checking type account, or NOT_FOUND = -1
      */
@@ -170,7 +170,6 @@ public class AccountDatabase {
                 ((MoneyMarket) accounts[index]).changeLoyalty(0);
             }
         }
-        System.out.println("Withdraw - balance updated.");
         return true;
     }
 
@@ -192,7 +191,7 @@ public class AccountDatabase {
     public void sortType(Account[] accounts) {
         for (int i = 0; i < numAcct; i++) {
             for (int j = i + 1; j < numAcct; j++) {
-                if (!accounts[j].equals(null)
+                if (accounts[j] != null
                     && accounts[j].getType().compareTo(accounts[i].getType()) < 0) {
                     Account temp = accounts[j];
                     accounts[j] = accounts[i];
@@ -233,8 +232,8 @@ public class AccountDatabase {
     public void update() {
         System.out.println("*list of accounts with updated balance");
         for (int i = 0; i < numAcct; i++) {
-            accounts[i].withdraw(accounts[i].fee());
             accounts[i].deposit(accounts[i].balance*accounts[i].monthlyInterest());
+            accounts[i].withdraw(accounts[i].fee());
             System.out.println(accounts[i]);
         }
         System.out.println("*end of list.");

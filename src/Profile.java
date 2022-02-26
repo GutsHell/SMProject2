@@ -3,9 +3,9 @@
  * @author Rory Xu, Hassan Alfareed
  */
 public class Profile {
-    private String fname;
-    private String lname;
-    private Date dob;
+    private final String fname;
+    private final String lname;
+    private final Date dob;
 
     /**
      * Constructs a profile for a person
