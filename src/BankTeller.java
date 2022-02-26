@@ -11,7 +11,6 @@ public class BankTeller {
             String[] input = command.nextLine().split("\\s+");
             switch (input[0]) {
                 case "":
-                    System.out.println();
                     break;
                 case "O":
                     oCommand(input, database);
@@ -34,7 +33,8 @@ public class BankTeller {
                 case "PI":
                     piCommand(database);
                     break;
-                case "UB":  //ubCommand(input);
+                case "UB":
+                    ubCommand(database);
                     break;
                 case "Q":
                     online = false;
@@ -196,6 +196,10 @@ public class BankTeller {
 
     private static void piCommand(AccountDatabase database) {
         database.printFeeAndInterest();
+    }
+
+    private static void ubCommand(AccountDatabase database) {
+        database.update();
     }
 
     public static boolean dateChecker(Date dob) {

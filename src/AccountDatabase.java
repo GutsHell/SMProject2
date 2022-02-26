@@ -169,11 +169,21 @@ public class AccountDatabase {
     }
 
     public void printFeeAndInterest() {
-        System.out.println("*list of accounts by account type.");
+        System.out.println("*list of accounts with fee and monthly interest");
         for (int i = 0; i < numAcct; i++) {
             System.out.println(accounts[i] + "::fee $" + df.format(accounts[i].fee())
                     + "::monthly interest $"
                     + df.format(accounts[i].balance*accounts[i].monthlyInterest()));
+        }
+        System.out.println("*end of list.");
+    }
+
+    public void update() {
+        System.out.println("*list of accounts with updated balance");
+        for (int i = 0; i < numAcct; i++) {
+            accounts[i].withdraw(accounts[i].fee());
+            accounts[i].deposit(accounts[i].balance*accounts[i].monthlyInterest());
+            System.out.println(accounts[i]);
         }
         System.out.println("*end of list.");
     }
