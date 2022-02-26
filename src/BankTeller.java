@@ -106,7 +106,7 @@ public class BankTeller {
             System.out.println("Not a valid amount.");
         }
         catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Invalid command!");
+            System.out.println("Missing data for opening an account.");
         }
     }
 
