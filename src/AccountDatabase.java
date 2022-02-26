@@ -7,9 +7,9 @@ import java.text.DecimalFormat;
 public class AccountDatabase {
     private Account [] accounts;
     private int numAcct;
-    static int NOT_FOUND = -1;
-    static int HAS_CHECKING = -2;
-    static final DecimalFormat df = new DecimalFormat("#,##0.00");
+    private static final int NOT_FOUND = -1;
+    private static final int HAS_CHECKING = -2;
+    private static final DecimalFormat df = new DecimalFormat("#,##0.00");
 
     /**
      * Constructs a new account database with a starting size of 4 accounts

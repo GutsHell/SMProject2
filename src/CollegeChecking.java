@@ -29,6 +29,7 @@ public class CollegeChecking extends Checking {
 
     /**
      * Gets the campus code in integer form
+     * @return the campus code
      */
     public int getCode() {
         return campusCode;

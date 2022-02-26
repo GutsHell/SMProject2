@@ -6,6 +6,9 @@ import java.util.Scanner;
  * @author Rory Xu, Hassan Alfareed
  */
 public class BankTeller {
+    /**
+     * Takes console input and produces console output
+     */
     public void run() {
         AccountDatabase database = new AccountDatabase();
         Scanner command = new Scanner(System.in);

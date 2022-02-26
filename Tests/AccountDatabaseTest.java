@@ -10,37 +10,22 @@ class AccountDatabaseTest {
 	Profile holder = new Profile("John", "Doe", dob);
 	Profile holder2 = new Profile("Jane", "Doe", dob);
 	Checking checking = new Checking(holder, 1000);
+	Checking checking2 = new Checking(holder2, 500);
 	CollegeChecking collegeChecking = new CollegeChecking(holder, 1000, 0);
 	Savings savings = new Savings(holder, 1000, 1);
 	MoneyMarket moneyMarket = new MoneyMarket(holder, 3000, 1);
 
+	//initializes a function that occurs before every test case
 	@BeforeEach
 	public void initEach(){
 		database = new AccountDatabase();
 	}
 
+	//this method takes
 	@Test
 	void open_false_when_opening_two_identical_checking_accounts() {
 		database.open(checking);
 		assertFalse(database.open(checking));
-	}
-
-	@Test
-	void open_false_when_opening_two_identical_college_checking_accounts() {
-		database.open(collegeChecking);
-		assertFalse(database.open(collegeChecking));
-	}
-
-	@Test
-	void open_false_when_opening_two_identical_saving_accounts() {
-		database.open(savings);
-		assertFalse(database.open(savings));
-	}
-
-	@Test
-	void open_false_when_opening_two_identical_money_market_accounts() {
-		database.open(moneyMarket);
-		assertFalse(database.open(moneyMarket));
 	}
 
 	@Test
@@ -60,6 +45,12 @@ class AccountDatabaseTest {
 		database.open(checking);
 		assertTrue(database.open(savings));
 		assertTrue(database.open(moneyMarket));
+	}
+
+	@Test
+	void open_true_when_opening_same_accounts_but_different_person() {
+		database.open(checking);
+		assertTrue(database.open(checking2));
 	}
 
 	@Test
