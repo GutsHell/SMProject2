@@ -1,6 +1,5 @@
 package bankteller;
 
-import bankteller.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

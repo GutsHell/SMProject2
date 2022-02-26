@@ -1,8 +1,5 @@
 package bankteller;
 
-import bankteller.Date;
-import bankteller.MoneyMarket;
-import bankteller.Profile;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

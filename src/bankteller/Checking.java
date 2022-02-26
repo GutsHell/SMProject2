@@ -1,7 +1,7 @@
 package bankteller;
 
 /**
- * A checking account sub-class of the bankteller.Account class
+ * A checking account sub-class of the Account class
  * @author Rory Xu, Hassan Alfareed
  */
 public class Checking extends Account {
@@ -16,7 +16,7 @@ public class Checking extends Account {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Account.java for checking account specifics
+     * Overrides the abstract method in Account.java for checking account specifics
      * @return The interest rate of the checking account
      */
     @Override
@@ -25,7 +25,7 @@ public class Checking extends Account {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Account.java for checking account specifics
+     * Overrides the abstract method in Account.java for checking account specifics
      * @return The monthly fee of the checking account
      */
     @Override
@@ -34,11 +34,11 @@ public class Checking extends Account {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Account.java for checking account specifics
+     * Overrides the abstract method in Account.java for checking account specifics
      * @return This account's type
      */
     @Override
     public String getType() {
-        return "bankteller.Checking";
+        return "Checking";
     }
 }

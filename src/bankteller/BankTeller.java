@@ -78,7 +78,7 @@ public class BankTeller {
             switch (accType) {
                 case "MM" -> {
                     if (balance < 2500) {
-                        System.out.println("Minimum of $2500 to open a bankteller.MoneyMarket account");
+                        System.out.println("Minimum of $2500 to open a MoneyMarket account");
                         return;
                     }
                     acc = new MoneyMarket(accHolder, balance, 1);
@@ -135,7 +135,7 @@ public class BankTeller {
                 default -> null;
             };
             if (!database.close(acc)) {
-                System.out.println("bankteller.Account is closed already.");
+                System.out.println("Account is closed already.");
             }
         }
 
@@ -243,7 +243,7 @@ public class BankTeller {
         Date current = new Date();
 
         if (!dob.isValid() || dob.compareTo(current) >= 0) {
-            System.out.println("bankteller.Date of birth invalid.");
+            System.out.println("Date of birth invalid.");
             return true;
 
         }

@@ -1,7 +1,7 @@
 package bankteller;
 
 /**
- * A college checking account sub-class of the bankteller.Account class
+ * A college checking account sub-class of the Account class
  * @author Rory Xu, Hassan Alfareed
  */
 public class CollegeChecking extends Checking {
@@ -10,7 +10,7 @@ public class CollegeChecking extends Checking {
 
     /**
      * Constructs a college checking account
-     * Uses bankteller.Checking account's super but also includes a campus code
+     * Uses Checking account's super but also includes a campus code
      * @param holder The account holder
      * @param balance The balance the account has
      * @param campusCode The campus code of the holder of the account
@@ -46,7 +46,7 @@ public class CollegeChecking extends Checking {
     }
 
     /**
-     * Overrides the bankteller.Checking toString to display important information pertaining to a college checking account
+     * Overrides the Checking toString to display important information pertaining to a college checking account
      * @return The college checking account's details
      */
     @Override
@@ -57,7 +57,7 @@ public class CollegeChecking extends Checking {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Checking.java for college checking account specifics
+     * Overrides the abstract method in Checking.java for college checking account specifics
      * @return The interest rate of the college checking account
      */
     @Override
@@ -66,7 +66,7 @@ public class CollegeChecking extends Checking {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Checking.java for college checking account specifics
+     * Overrides the abstract method in Checking.java for college checking account specifics
      * @return The monthly fee of the college checking account
      */
     @Override
@@ -75,11 +75,11 @@ public class CollegeChecking extends Checking {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Checking.java for college checking account specifics
+     * Overrides the abstract method in Checking.java for college checking account specifics
      * @return This account's type
      */
     @Override
     public String getType() {
-        return "College bankteller.Checking";
+        return "College Checking";
     }
 }

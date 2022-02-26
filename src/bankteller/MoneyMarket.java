@@ -1,7 +1,7 @@
 package bankteller;
 
 /**
- * A money market account sub-class of the bankteller.Account class
+ * A money market account sub-class of the Account class
  * @author Rory Xu, Hassan Alfareed
  */
 public class MoneyMarket extends Savings {
@@ -10,7 +10,7 @@ public class MoneyMarket extends Savings {
 
     /**
      * Constructs a Money Market account
-     * Uses bankteller.Savings' super, but also sets the number of withdrawals to 0
+     * Uses Savings' super, but also sets the number of withdrawals to 0
      * @param holder The holder of this account
      * @param balance The balance of this acocunt
      * @param loyalty The loyalty code of this account
@@ -36,7 +36,7 @@ public class MoneyMarket extends Savings {
     }
 
     /**
-     * Overrides the bankteller.Savings' toString in order display important information for a money market account
+     * Overrides the Savings' toString in order display important information for a money market account
      * @return This money market account's information
      */
     @Override
@@ -49,7 +49,7 @@ public class MoneyMarket extends Savings {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Savings.java for money market account specifics
+     * Overrides the abstract method in Savings.java for money market account specifics
      * @return The interest rate of the money market account
      */
     @Override
@@ -58,7 +58,7 @@ public class MoneyMarket extends Savings {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Savings.java for money market account specifics
+     * Overrides the abstract method in Savings.java for money market account specifics
      * @return The monthly fee of the money market account
      */
     @Override
@@ -68,11 +68,11 @@ public class MoneyMarket extends Savings {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Savings.java for money market account specifics
+     * Overrides the abstract method in Savings.java for money market account specifics
      * @return This account's type
      */
     @Override
     public String getType() {
-        return "Money Market bankteller.Savings";
+        return "Money Market Savings";
     }
 }

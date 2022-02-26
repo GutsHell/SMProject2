@@ -36,7 +36,7 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Compares one bankteller.Date object to another in order to determine whether they are the same
+     * Compares one Date object to another in order to determine whether they are the same
      *
      * @param date The date to be compared with
      * @return 0 if they are the same
@@ -55,7 +55,7 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Converts the bankteller.Date object into String format
+     * Converts the Date object into String format
      *
      * @return A String that contains this date
      */
@@ -77,10 +77,6 @@ public class Date implements Comparable<Date> {
         int leapFebDays = 29;
 
         if (year < 1900 || month < 0 || month > 11 || day < 1 || day > 31) return false;
-
-        if (isThirtyOne(this.month) && (this.day > extendedMonthDays)) {
-            return false;
-        }
 
         if (isThirty(this.month) && (this.day > standardMonthDays)) {
             return false;

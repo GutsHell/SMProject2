@@ -41,8 +41,8 @@ public class AccountDatabase {
     private int findChecking(Account account) {
         for (int i = 0; i < numAcct; i++) {
             if (accounts[i].getHolder().equals(account.getHolder())
-                    && ((accounts[i].getType().equals("bankteller.Checking") && account.getType().equals("College bankteller.Checking"))
-                || (accounts[i].getType().equals("College bankteller.Checking") && account.getType().equals("bankteller.Checking")))) {
+                    && ((accounts[i].getType().equals("Checking") && account.getType().equals("College Checking"))
+                || (accounts[i].getType().equals("College Checking") && account.getType().equals("Checking")))) {
                 return HAS_CHECKING;
             }
         }
@@ -71,18 +71,18 @@ public class AccountDatabase {
             if (accounts[index].closed) {
                 accounts[index].changeState();
                 accounts[index].deposit(account.balance);
-                if (accounts[index].getType().equals("College bankteller.Checking")) {
+                if (accounts[index].getType().equals("College Checking")) {
                     ((CollegeChecking) accounts[index]).changeCampus(((CollegeChecking) accounts[index]).getCode());
                 }
 
-                if (accounts[index].getType().equals("bankteller.Savings")) {
+                if (accounts[index].getType().equals("Savings")) {
                     ((Savings) accounts[index]).changeLoyalty(((Savings) accounts[index]).getLoyalty());
                 }
 
-                if(accounts[index].getType().equals("Money Market bankteller.Savings")) {
+                if(accounts[index].getType().equals("Money Market Savings")) {
                     ((MoneyMarket) accounts[index]).changeLoyalty(1);
                 }
-                System.out.println("bankteller.Account reopened.");
+                System.out.println("Account reopened.");
                 return true;
             }
         }
@@ -94,7 +94,7 @@ public class AccountDatabase {
             if (accounts[accounts.length - 1] != null) grow();
             accounts[numAcct] = account;
             numAcct++;
-            System.out.println("bankteller.Account opened.");
+            System.out.println("Account opened.");
             return true;
         }
         return false;
@@ -111,14 +111,14 @@ public class AccountDatabase {
             if (!accounts[index].closed) {
                 accounts[index].changeState();
                 accounts[index].setBalance(0);
-                if (accounts[index].getType().equals("bankteller.Savings")) {
+                if (accounts[index].getType().equals("Savings")) {
                     ((Savings) accounts[index]).changeLoyalty(0);
                 }
 
-                if(accounts[index].getType().equals("Money Market bankteller.Savings")) {
+                if(accounts[index].getType().equals("Money Market Savings")) {
                     ((MoneyMarket) accounts[index]).changeLoyalty(0);
                 }
-                System.out.println("bankteller.Account closed.");
+                System.out.println("Account closed.");
                 return true;
             }
         }
@@ -166,7 +166,7 @@ public class AccountDatabase {
             }
         }
         accounts[index].withdraw(account.balance);
-        if (accounts[index].getType().equals("Money Market bankteller.Savings")) {
+        if (accounts[index].getType().equals("Money Market Savings")) {
             ((MoneyMarket) accounts[index]).addWithdrawal();
             if (accounts[index].balance < 2500) {
                 ((MoneyMarket) accounts[index]).changeLoyalty(0);
@@ -181,7 +181,7 @@ public class AccountDatabase {
     public void print() {
 
         if (!(numAcct > 0)) {
-            System.out.println("bankteller.Account Database is empty!");
+            System.out.println("Account Database is empty!");
             return;
         }
         System.out.println("\n*list of accounts in the database*");
@@ -213,7 +213,7 @@ public class AccountDatabase {
      */
     public void printByAccountType() {
         if (!(numAcct > 0)) {
-            System.out.println("bankteller.Account Database is empty!");
+            System.out.println("Account Database is empty!");
             return;
         }
         System.out.println("\n*list of accounts by account type.");
@@ -229,7 +229,7 @@ public class AccountDatabase {
      */
     public void printFeeAndInterest() {
         if (!(numAcct > 0)) {
-            System.out.println("bankteller.Account Database is empty!");
+            System.out.println("Account Database is empty!");
             return;
         }
         System.out.println("\n*list of accounts with fee and monthly interest");
@@ -246,7 +246,7 @@ public class AccountDatabase {
      */
     public void update() {
         if (!(numAcct > 0)) {
-            System.out.println("bankteller.Account Database is empty!");
+            System.out.println("Account Database is empty!");
             return;
         }
         System.out.println("\n*list of accounts with updated balance");

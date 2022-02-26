@@ -1,7 +1,7 @@
 package bankteller;
 
 /**
- * A savings account sub-class of the bankteller.Account class
+ * A savings account sub-class of the Account class
  * @author Rory Xu, Hassan Alfareed
  */
 public class Savings extends Account {
@@ -10,7 +10,7 @@ public class Savings extends Account {
 
     /**
      * Constructs a savings account
-     * Uses bankteller.Account's super, but also includes a loyalty code
+     * Uses Account's super, but also includes a loyalty code
      * @param holder The account holder
      * @param balance The balance of the account
      * @param loyalty The loyalty code of the account
@@ -45,7 +45,7 @@ public class Savings extends Account {
     }
 
     /**
-     * Overrides the bankteller.Account.java toString to display important information for checking accounts
+     * Overrides the Account.java toString to display important information for checking accounts
      * @return This checking account's information
      */
     @Override
@@ -56,7 +56,7 @@ public class Savings extends Account {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Account.java for savings account specifics
+     * Overrides the abstract method in Account.java for savings account specifics
      * @return The interest rate of the savings account
      */
     @Override
@@ -65,7 +65,7 @@ public class Savings extends Account {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Account.java for savings account specifics
+     * Overrides the abstract method in Account.java for savings account specifics
      * @return The monthly fee of the savings account
      */
     @Override
@@ -74,11 +74,11 @@ public class Savings extends Account {
     }
 
     /**
-     * Overrides the abstract method in bankteller.Account.java for savings account specifics
+     * Overrides the abstract method in Account.java for savings account specifics
      * @return This account's type
      */
     @Override
     public String getType() {
-        return "bankteller.Savings";
+        return "Savings";
     }
 }
