@@ -1,6 +1,10 @@
-import javax.sound.sampled.EnumControl;
 import java.util.Scanner;
 
+/**
+ * A user interface class that allows for input and returns output in the console,
+ * acting as a virtual bank teller
+ * @author Rory Xu, Hassan Alfareed
+ */
 public class BankTeller {
     public void run() {
         AccountDatabase database = new AccountDatabase();
@@ -48,6 +52,12 @@ public class BankTeller {
         command.close();
     }
 
+    /**
+     * Executes when the teller wishes to open a new account
+     * Can also open closed accounts
+     * @param input Open account information
+     * @param database The database of accounts to be modified
+     */
     private static void oCommand(String[] input, AccountDatabase database) {
         try{
             String accType = input[1];
@@ -100,6 +110,11 @@ public class BankTeller {
         }
     }
 
+    /**
+     * Executes when the teller wishes to close an account
+     * @param input Close account information
+     * @param database The database of accounts to be modified
+     */
     private static void cCommand(String[] input, AccountDatabase database) {
         try {
             String accType = input[1];
@@ -130,6 +145,11 @@ public class BankTeller {
         }
     }
 
+    /**
+     * Executes when the teller wishes to deposit money into an account
+     * @param input Deposit information
+     * @param database The database of accounts to be modified
+     */
     private static void dCommand(String[] input, AccountDatabase database) {
         try {
             String accType = input[1];
@@ -158,6 +178,12 @@ public class BankTeller {
         }
     }
 
+    /**
+     * Executes when the teller wishes to withdraw money from an account
+     * Cannot overdraw an account into negatives
+     * @param input Withdrawal information
+     * @param database THe database of accounts to be modified
+     */
     private static void wCommand(String[] input, AccountDatabase database) {
         try {
             String accType = input[1];
@@ -186,22 +212,43 @@ public class BankTeller {
         }
     }
 
+    /**
+     * Prints the list of accounts in the database in current order
+     * @param database The database of accounts to print
+     */
     private static void pCommand(AccountDatabase database) {
         database.print();
     }
 
+    /**
+     * Prints the list of acocunts in the database ordered by the type, alphabetically
+     * @param database The database of accounts to print
+     */
     private static void ptCommand(AccountDatabase database) {
         database.printByAccountType();
     }
 
+    /**
+     * Prints the list of accounts in the database and includes their monthly fee and interest information
+     * @param database The database of accounts to print
+     */
     private static void piCommand(AccountDatabase database) {
         database.printFeeAndInterest();
     }
 
+    /**
+     * Prints the list of accounts in the database with updated values using monthly fee and interest application
+     * @param database The database of accounts to print
+     */
     private static void ubCommand(AccountDatabase database) {
         database.update();
     }
 
+    /**
+     * Checks whether or not the date of birth is a valid date of birth
+     * @param dob The date of birth to be checked
+     * @return Whether or not the date of birth is valid
+     */
     public static boolean dateChecker(Date dob) {
         Date current = new Date();
 

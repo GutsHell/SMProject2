@@ -1,7 +1,10 @@
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
-
+/**
+ * A date class that allows for object representation of a date in string form
+ * @author Rory Xu, Hassan Alfareed
+ */
 public class Date implements Comparable<Date> {
     private int year;
     private int month;
