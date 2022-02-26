@@ -1,0 +1,142 @@
+@startuml
+abstract class Account {
+
+#Profile holder
+#boolean closed
+#double balance
+
++boolean equals(Object o)
++String toString()
+
++void withdraw(double amount)
++void deposit(double amount)
++void changeState()
++void setBalance()
++Profile getHolder()
++{abstract} double monthlyInterest()
++{abstract} double fee()
++{abstract} String getType()
+}
+
+class Checking {
+
++double monthlyInterest()
++double fee()
++String getType()
+
+}
+
+class CollegeChecking {
+
++String getCampus()
++int getCode()
++void changeCampus(int campusCode)
++String toString()
++double monthlyInterest()
++double fee()
++String getType()
+
+}
+
+
+class Savings {
+
++void changeLoyalty(int loyalty)
++void getLoyalty()
++String isLoyal()
++String toString()
++double monthlyInterest()
++double fee()
++String getType()
+
+}
+
+
+class MoneyMarket {
+
++void addWithdrawal()
++int getWithdrawals()
++String toString()
++double monthlyInterest()
++double fee()
++String getType()
+
+}
+
+class Profile {
+
+-String fname
+-String lname
+-Date dob
+
++boolean equals(Object obj)
++String toString()
+}
+
+class AccountDatabase {
+
+-Account[] accounts
+-int numAcct
+-{static} int NOT_FOUND = -1
+-{static} int HAS_CHECKING = -2
+-{static} DecimalFormat df
+
+-int find(Account acccount)
+-int findChecking(Account account)
+-void grow()
+
++boolean open(Account account)
++boolean close(Account account)
++void deposit(Account account)
++boolean withdraw(Account account)
++void print()
++void sortType(Accounts[] accounts)
++void printByAccountType()
++void printFeeAndInterest()
++void update()
+}
+
+class BankTeller {
+
++void run()
+-{static} void oCommand(String input, AccountDatabase database)
+-{static} void cCommand(String input, AccountDatabase database)
+-{static} void dCommand(String input, AccountDatabase database)
+-{static} void wCommand(String input, AccountDatabase database)
+-{static} void pCommand(AccountDatabase database)
+-{static} void ptCommand(AccountDatabase database)
+-{static} void piCommand(AccountDatabase database)
+-{static} void ubCommand(AccountDatabase database)
++{static} boolean dateChecker(Date dob)
+}
+
+class RunProject2 {
+
++void main()
+}
+
+class Date {
+
+-int year
+-int month
+-int day
+
++int compareTo(Date date)
++String toString()
++boolean isValid()
++boolean inArray(int[] arr, int valueToCheck)
++boolean isLeapYear(int year)
++boolean isThirtyOne(int month)
++boolean isThirty(int month)
+}
+
+RunProject2 -- BankTeller : uses >
+BankTeller -- AccountDatabase : uses >
+AccountDatabase "0..n" o-- "1" Account
+Account <|-- Checking
+Account <|-- Savings
+Checking <|-- CollegeChecking
+Savings <|-- MoneyMarket
+Account "0..4" o-- "1" Profile
+Date <-- Profile
+@enduml
