@@ -1,7 +1,7 @@
 @startuml
-abstract class Account {
+abstract class bankteller.Account {
 
-#Profile holder
+#bankteller.Profile holder
 #boolean closed
 #double balance
 
@@ -12,13 +12,13 @@ abstract class Account {
 +void deposit(double amount)
 +void changeState()
 +void setBalance()
-+Profile getHolder()
++bankteller.Profile getHolder()
 +{abstract} double monthlyInterest()
 +{abstract} double fee()
 +{abstract} String getType()
 }
 
-class Checking {
+class bankteller.Checking {
 
 +double monthlyInterest()
 +double fee()
@@ -26,7 +26,7 @@ class Checking {
 
 }
 
-class CollegeChecking {
+class bankteller.CollegeChecking {
 
 +String getCampus()
 +int getCode()
@@ -39,7 +39,7 @@ class CollegeChecking {
 }
 
 
-class Savings {
+class bankteller.Savings {
 
 +void changeLoyalty(int loyalty)
 +void getLoyalty()
@@ -52,7 +52,7 @@ class Savings {
 }
 
 
-class MoneyMarket {
+class bankteller.MoneyMarket {
 
 +void addWithdrawal()
 +int getWithdrawals()
@@ -63,32 +63,32 @@ class MoneyMarket {
 
 }
 
-class Profile {
+class bankteller.Profile {
 
 -String fname
 -String lname
--Date dob
+-bankteller.Date dob
 
 +boolean equals(Object obj)
 +String toString()
 }
 
-class AccountDatabase {
+class bankteller.AccountDatabase {
 
--Account[] accounts
+-bankteller.Account[] accounts
 -int numAcct
 -{static} int NOT_FOUND = -1
 -{static} int HAS_CHECKING = -2
 -{static} DecimalFormat df
 
--int find(Account acccount)
--int findChecking(Account account)
+-int find(bankteller.Account acccount)
+-int findChecking(bankteller.Account account)
 -void grow()
 
-+boolean open(Account account)
-+boolean close(Account account)
-+void deposit(Account account)
-+boolean withdraw(Account account)
++boolean open(bankteller.Account account)
++boolean close(bankteller.Account account)
++void deposit(bankteller.Account account)
++boolean withdraw(bankteller.Account account)
 +void print()
 +void sortType(Accounts[] accounts)
 +void printByAccountType()
@@ -96,18 +96,18 @@ class AccountDatabase {
 +void update()
 }
 
-class BankTeller {
+class bankteller.BankTeller {
 
 +void run()
--{static} void oCommand(String input, AccountDatabase database)
--{static} void cCommand(String input, AccountDatabase database)
--{static} void dCommand(String input, AccountDatabase database)
--{static} void wCommand(String input, AccountDatabase database)
--{static} void pCommand(AccountDatabase database)
--{static} void ptCommand(AccountDatabase database)
--{static} void piCommand(AccountDatabase database)
--{static} void ubCommand(AccountDatabase database)
-+{static} boolean dateChecker(Date dob)
+-{static} void oCommand(String input, bankteller.AccountDatabase database)
+-{static} void cCommand(String input, bankteller.AccountDatabase database)
+-{static} void dCommand(String input, bankteller.AccountDatabase database)
+-{static} void wCommand(String input, bankteller.AccountDatabase database)
+-{static} void pCommand(bankteller.AccountDatabase database)
+-{static} void ptCommand(bankteller.AccountDatabase database)
+-{static} void piCommand(bankteller.AccountDatabase database)
+-{static} void ubCommand(bankteller.AccountDatabase database)
++{static} boolean dateChecker(bankteller.Date dob)
 }
 
 class RunProject2 {
@@ -115,13 +115,13 @@ class RunProject2 {
 +void main()
 }
 
-class Date {
+class bankteller.Date {
 
 -int year
 -int month
 -int day
 
-+int compareTo(Date date)
++int compareTo(bankteller.Date date)
 +String toString()
 +boolean isValid()
 +boolean inArray(int[] arr, int valueToCheck)
@@ -130,13 +130,13 @@ class Date {
 +boolean isThirty(int month)
 }
 
-RunProject2 -- BankTeller : uses >
-BankTeller -- AccountDatabase : uses >
-AccountDatabase "0..n" o-- "1" Account
-Account <|-- Checking
-Account <|-- Savings
-Checking <|-- CollegeChecking
-Savings <|-- MoneyMarket
-Account "0..4" o-- "1" Profile
-Date <-- Profile
+RunProject2 -- bankteller.BankTeller : uses >
+bankteller.BankTeller -- bankteller.AccountDatabase : uses >
+bankteller.AccountDatabase "0..n" o-- "1" bankteller.Account
+bankteller.Account <|-- bankteller.Checking
+bankteller.Account <|-- bankteller.Savings
+bankteller.Checking <|-- bankteller.CollegeChecking
+bankteller.Savings <|-- bankteller.MoneyMarket
+bankteller.Account "0..4" o-- "1" bankteller.Profile
+bankteller.Date <-- bankteller.Profile
 @enduml
