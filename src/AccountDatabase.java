@@ -94,11 +94,45 @@ public class AccountDatabase {
     }
 
     public void deposit(Account account) {
-
+        if (account.balance <= 0) {
+            System.out.println("Deposit - amount cannot be 0 or negative");
+            return;
+        }
+        int index = find(account);
+        if (index != NOT_FOUND) {
+            accounts[index].deposit(account.balance);
+            System.out.println("Deposit - balance updated.");
+        }
+        else {
+            System.out.println(account.holder + " " + account.getType() + " is not in the database.");
+        }
     }
 
     public boolean withdraw(Account account) {
-        return false;
+        if (account.balance <= 0) {
+            System.out.println("Withdraw - amount cannot be 0 or negative");
+            return false;
+        }
+        int index = find(account);
+        if (index == NOT_FOUND) {
+            System.out.println(account.holder + " " + account.getType() + " is not in the database.");
+            return false;
+        }
+        else {
+            if (accounts[index].balance < account.balance) {
+                System.out.println("Withdraw - insufficient funds.");
+                return false;
+            }
+        }
+        accounts[index].withdraw(account.balance);
+        if (accounts[index].getType().equals("Money Market Savings")) {
+            ((MoneyMarket) accounts[index]).addWithdrawal();
+            if (accounts[index].balance < 2500) {
+                ((MoneyMarket) accounts[index]).changeLoyalty(0);
+            }
+        }
+        System.out.println("Withdraw - balance updated.");
+        return true;
     }
 
     public void print() {

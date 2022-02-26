@@ -20,10 +20,10 @@ public class BankTeller {
                     cCommand(input, database);
                     break;
                 case "D":
-                    //dCommand(input, database);
+                    dCommand(input, database);
                     break;
                 case "W":
-                    //wCommand(input, database);
+                    wCommand(input, database);
                     break;
                 case "P":
                     pCommand(database);
@@ -126,6 +126,62 @@ public class BankTeller {
 
         catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Missing data for closing an account.");
+        }
+    }
+
+    private static void dCommand(String[] input, AccountDatabase database) {
+        try {
+            String accType = input[1];
+            Date dob = new Date(input[4]);
+            if (!dateChecker(dob)) return;
+            Profile accHolder = new Profile(input[2], input[3], dob);
+            double balance = Double.parseDouble(input[5]);
+
+            Account acc = null;
+            if (accType.equals("MM")) {
+                acc = new MoneyMarket(accHolder, balance, 0);
+            }
+            else if (accType.equals("C")) {
+                acc = new Checking(accHolder, balance);
+            }
+            else if (accType.equals("CC")) {
+                acc = new CollegeChecking(accHolder, balance, 0);
+            }
+            else if (accType.equals("S")) {
+                acc = new Savings(accHolder, balance, 0);
+            }
+            database.deposit(acc);
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Not a valid amount.");
+        }
+    }
+
+    private static void wCommand(String[] input, AccountDatabase database) {
+        try {
+            String accType = input[1];
+            Date dob = new Date(input[4]);
+            if (!dateChecker(dob)) return;
+            Profile accHolder = new Profile(input[2], input[3], dob);
+            double balance = Double.parseDouble(input[5]);
+
+            Account acc = null;
+            if (accType.equals("MM")) {
+                acc = new MoneyMarket(accHolder, balance, 0);
+            }
+            else if (accType.equals("C")) {
+                acc = new Checking(accHolder, balance);
+            }
+            else if (accType.equals("CC")) {
+                acc = new CollegeChecking(accHolder, balance, 0);
+            }
+            else if (accType.equals("S")) {
+                acc = new Savings(accHolder, balance, 0);
+            }
+            database.withdraw(acc);
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Not a valid amount.");
         }
     }
 
