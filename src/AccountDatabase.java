@@ -177,11 +177,11 @@ public class AccountDatabase {
      * Prints the database in current order
      */
     public void print() {
-        System.out.println("*list of accounts in the database*");
+        System.out.println("\n*list of accounts in the database*");
         for (int i = 0; i < numAcct; i++) {
             System.out.println(accounts[i]);
         }
-        System.out.println("*end of list*");
+        System.out.println("*end of list*\n");
     }
 
     /**
@@ -205,37 +205,37 @@ public class AccountDatabase {
      * Prints the database in alphabetical order by type
      */
     public void printByAccountType() {
-        System.out.println("*list of accounts by account type.");
+        System.out.println("\n*list of accounts by account type.");
         sortType(accounts);
         for (int i = 0; i < numAcct; i++) {
             System.out.println(accounts[i]);
         }
-        System.out.println("*end of list.");
+        System.out.println("*end of list.\n");
     }
 
     /**
      * Prints the database in current order and with monthly fee and interest information
      */
     public void printFeeAndInterest() {
-        System.out.println("*list of accounts with fee and monthly interest");
+        System.out.println("\n*list of accounts with fee and monthly interest");
         for (int i = 0; i < numAcct; i++) {
             System.out.println(accounts[i] + "::fee $" + df.format(accounts[i].fee())
                     + "::monthly interest $"
                     + df.format(accounts[i].balance*accounts[i].monthlyInterest()));
         }
-        System.out.println("*end of list.");
+        System.out.println("*end of list.\n");
     }
 
     /**
      * Updates the account balances with fee and interest rates
      */
     public void update() {
-        System.out.println("*list of accounts with updated balance");
+        System.out.println("\n*list of accounts with updated balance");
         for (int i = 0; i < numAcct; i++) {
             accounts[i].deposit(accounts[i].balance*accounts[i].monthlyInterest());
             accounts[i].withdraw(accounts[i].fee());
             System.out.println(accounts[i]);
         }
-        System.out.println("*end of list.");
+        System.out.println("*end of list.\n");
     }
 }
