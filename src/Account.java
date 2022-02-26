@@ -24,7 +24,7 @@ public abstract class Account {
     /**
      * DecimalFormat function that allows for money to be displayed in two decimal places
      */
-    protected static final DecimalFormat df = new DecimalFormat("0.00");
+    protected static final DecimalFormat df = new DecimalFormat("#,##0.00");
 
     /**
      * Overrides the default java equals to see if two accounts are the same
