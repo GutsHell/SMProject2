@@ -56,6 +56,7 @@ class MoneyMarket {
 
 +void addWithdrawal()
 +int getWithdrawals()
++void resetWithdrawals()
 +String toString()
 +double monthlyInterest()
 +double fee()
