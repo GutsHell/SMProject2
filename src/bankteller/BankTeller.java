@@ -78,7 +78,7 @@ public class BankTeller {
             switch (accType) {
                 case "MM" -> {
                     if (balance < 2500) {
-                        System.out.println("Minimum of $2500 to open a MoneyMarket account");
+                        System.out.println("Minimum of $2500 to open a MoneyMarket account.");
                         return;
                     }
                     acc = new MoneyMarket(accHolder, balance, 1);
@@ -104,7 +104,7 @@ public class BankTeller {
 
             if (!database.open(acc)) {
                 assert acc != null;
-                System.out.println(acc.holder + " same account (type) is in the database.");
+                System.out.println(acc.holder + " same account(type) is in the database.");
             }
         }
         catch (NumberFormatException e) {

@@ -72,11 +72,11 @@ public class AccountDatabase {
                 accounts[index].changeState();
                 accounts[index].deposit(account.balance);
                 if (accounts[index].getType().equals("College Checking")) {
-                    ((CollegeChecking) accounts[index]).changeCampus(((CollegeChecking) accounts[index]).getCode());
+                    ((CollegeChecking) accounts[index]).changeCampus(((CollegeChecking) account).getCode());
                 }
 
                 if (accounts[index].getType().equals("Savings")) {
-                    ((Savings) accounts[index]).changeLoyalty(((Savings) accounts[index]).getLoyalty());
+                    ((Savings) accounts[index]).changeLoyalty(((Savings) account).getLoyalty());
                 }
 
                 if(accounts[index].getType().equals("Money Market Savings")) {
@@ -117,6 +117,7 @@ public class AccountDatabase {
 
                 if(accounts[index].getType().equals("Money Market Savings")) {
                     ((MoneyMarket) accounts[index]).changeLoyalty(0);
+                    ((MoneyMarket) accounts[index]).resetWithdrawals();
                 }
                 System.out.println("Account closed.");
                 return true;
@@ -131,7 +132,7 @@ public class AccountDatabase {
      */
     public void deposit(Account account) {
         if (account.balance <= 0) {
-            System.out.println("Deposit - amount cannot be 0 or negative");
+            System.out.println("Deposit - amount cannot be 0 or negative.");
             return;
         }
         int index = find(account);
@@ -151,7 +152,7 @@ public class AccountDatabase {
      */
     public boolean withdraw(Account account) {
         if (account.balance <= 0) {
-            System.out.println("Withdraw - amount cannot be 0 or negative");
+            System.out.println("Withdraw - amount cannot be 0 or negative.");
             return false;
         }
         int index = find(account);
@@ -161,7 +162,7 @@ public class AccountDatabase {
         }
         else {
             if (accounts[index].balance < account.balance) {
-                System.out.println("Withdraw - insufficient funds.");
+                System.out.println("Withdraw - insufficient fund.");
                 return false;
             }
         }

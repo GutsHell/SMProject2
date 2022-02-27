@@ -36,6 +36,13 @@ public class MoneyMarket extends Savings {
     }
 
     /**
+     * Resets the number of withdrawals to 0
+     */
+    public void resetWithdrawals() {
+        this.withdrawals = 0;
+    }
+
+    /**
      * Overrides the Savings' toString in order display important information for a money market account
      * @return This money market account's information
      */
