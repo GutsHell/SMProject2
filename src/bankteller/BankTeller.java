@@ -71,7 +71,7 @@ public class BankTeller {
             Profile accHolder = new Profile(input[2], input[3], dob);
             double balance = Double.parseDouble(input[5]);
             if (balance <= 0) {
-                System.out.println("Initial deposit cannot be 0 or negative");
+                System.out.println("Initial deposit cannot be 0 or negative.");
                 return;
             }
             Account acc = null;
