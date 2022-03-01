@@ -239,7 +239,7 @@ public class BankTeller {
      * @param dob The date of birth to be checked
      * @return Whether or not the date of birth is valid
      */
-    public static boolean dateChecker(Date dob) {
+    private static boolean dateChecker(Date dob) {
         Date current = new Date();
 
         if (!dob.isValid() || dob.compareTo(current) >= 0) {

@@ -27,6 +27,7 @@ class Checking {
 }
 
 class CollegeChecking {
+-int campusCode
 
 +String getCampus()
 +int getCode()
@@ -40,6 +41,7 @@ class CollegeChecking {
 
 
 class Savings {
+#int loyalty
 
 +void changeLoyalty(int loyalty)
 +void getLoyalty()
@@ -53,6 +55,7 @@ class Savings {
 
 
 class MoneyMarket {
+-int withdrawals
 
 +void addWithdrawal()
 +int getWithdrawals()
@@ -78,13 +81,8 @@ class AccountDatabase {
 
 -Account[] accounts
 -int numAcct
--{static} int NOT_FOUND = -1
--{static} int HAS_CHECKING = -2
--{static} DecimalFormat df
 
--int find(Account acccount)
--int findChecking(Account account)
--void grow()
++AccountDatabase()
 
 +boolean open(Account account)
 +boolean close(Account account)
@@ -100,20 +98,7 @@ class AccountDatabase {
 class BankTeller {
 
 +void run()
--{static} void oCommand(String input, AccountDatabase database)
--{static} void cCommand(String input, AccountDatabase database)
--{static} void dCommand(String input, AccountDatabase database)
--{static} void wCommand(String input, AccountDatabase database)
--{static} void pCommand(AccountDatabase database)
--{static} void ptCommand(AccountDatabase database)
--{static} void piCommand(AccountDatabase database)
--{static} void ubCommand(AccountDatabase database)
-+{static} boolean dateChecker(Date dob)
-}
 
-class RunProject2 {
-
-+void main()
 }
 
 class Date {
@@ -121,6 +106,8 @@ class Date {
 -int year
 -int month
 -int day
+
++Date(String date)
 
 +int compareTo(Date date)
 +String toString()
@@ -131,7 +118,6 @@ class Date {
 +boolean isThirty(int month)
 }
 
-RunProject2 -- BankTeller : uses >
 BankTeller -- AccountDatabase : uses >
 AccountDatabase "0..n" o-- "1" Account
 Account <|-- Checking
